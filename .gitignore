@@ -1,0 +1,16 @@
+*.root
+build
+install
+storage
+tags
+.idea
+.vs*
+Debug
+*.pyc
+*.tmp
+*.temp
+*.zip
+*.tgz
+*.tar.gz
+.DS_Store
+.cache
