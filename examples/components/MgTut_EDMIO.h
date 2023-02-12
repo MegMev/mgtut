@@ -48,7 +48,7 @@ public:
 
 private:
   /// Pointer to the interface of histogram service
-  SmartIF<ITHistSvc> m_histSvc;
+  ServiceHandle<ITHistSvc> m_histSvc;
 
   /// Handle to EDM collection
   DataHandle<edm4hep::SimCalorimeterHitCollection> m_caloHits{"CztHits", Gaudi::DataHandle::Reader, this};

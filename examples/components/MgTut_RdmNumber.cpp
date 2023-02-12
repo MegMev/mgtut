@@ -9,7 +9,7 @@
 DECLARE_COMPONENT(MgTut_RdmNumber)
 
 MgTut_RdmNumber::MgTut_RdmNumber(const std::string& aName, ISvcLocator* aSvcLoc)
-    : GaudiAlgorithm(aName, aSvcLoc) {
+: GaudiAlgorithm(aName, aSvcLoc), m_histSvc("THistSvc", aName), m_randSvc("RndmGenSvc", aName){
 }
 MgTut_RdmNumber::~MgTut_RdmNumber() {}
 
@@ -18,13 +18,11 @@ StatusCode MgTut_RdmNumber::initialize() {
   if (GaudiAlgorithm::initialize().isFailure()) return StatusCode::FAILURE;
 
   // fetch services
-  m_histSvc = service("THistSvc");
   if (!m_histSvc) {
     error() << "Unable to locate Histogram Service" << endmsg;
     return StatusCode::FAILURE;
   }
 
-  m_randSvc = service("RndmGenSvc");
   if (!m_randSvc) {
     error() << "Unable to locate RndmGen Service" << endmsg;
     return StatusCode::FAILURE;
@@ -41,7 +39,8 @@ StatusCode MgTut_RdmNumber::initialize() {
 }
 
 StatusCode MgTut_RdmNumber::execute() {
-  Rndm::Numbers gauss( m_randSvc, Rndm::Gauss( m_mean, m_sigma ) );
+  // [Improve] have to use get(), no conversion operator implementation in GaudiHandle
+  Rndm::Numbers gauss( m_randSvc.get(), Rndm::Gauss( m_mean, m_sigma ) );
 
   TH1* h( nullptr );
   if ( m_histSvc->getHist( "/tutorial"+m_dir+"/"+m_name, h ).isSuccess() ) {

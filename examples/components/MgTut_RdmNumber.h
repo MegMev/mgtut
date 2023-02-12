@@ -37,9 +37,9 @@ public:
 
 private:
   /// Pointer to the interface of histogram service
-  SmartIF<ITHistSvc> m_histSvc;
+  ServiceHandle<ITHistSvc> m_histSvc;
   /// Pointer to the random numbers service
-  SmartIF<IRndmGenSvc> m_randSvc;
+  ServiceHandle<IRndmGenSvc> m_randSvc;
 
   /// random generator parameters
   Gaudi::Property<float> m_mean{this, "Mean", 0.0, "Mean of Gaussian distribution"};

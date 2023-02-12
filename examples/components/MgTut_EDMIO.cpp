@@ -12,7 +12,7 @@
 DECLARE_COMPONENT(MgTut_EDMIO)
 
 MgTut_EDMIO::MgTut_EDMIO(const std::string &aName, ISvcLocator *aSvcLoc)
-    : GaudiAlgorithm(aName, aSvcLoc) {
+: GaudiAlgorithm(aName, aSvcLoc), m_histSvc("THistSvc", aName){
   declareProperty("CaloSimHits", m_caloHits,
                   "Simulated Hit Collection of Calorimeter");
   declareProperty("OffsetCaloSimHits", m_offsetCaloHits,
@@ -25,7 +25,6 @@ StatusCode MgTut_EDMIO::initialize() {
   if (GaudiAlgorithm::initialize().isFailure()) return StatusCode::FAILURE;
 
   /// services
-  m_histSvc = service("THistSvc");
   if (!m_histSvc) {
     error() << "Unable to locate Histogram Service" << endmsg;
     return StatusCode::FAILURE;
