@@ -20,25 +20,12 @@
 <section id="sec-title-slide">
 <h1 class="title">Data Access: Transient Event Store</h1><em></em><br><br>Yong Zhou<br>
 </section>
-<section id="table-of-contents-section">
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#/slide-1">1. Seperate repository for tutorial</a></li>
-<li><a href="#/slide-2">2. Task last week</a></li>
-<li><a href="#/slide-3">3. Event Data Access in Gaudi/k4megat</a></li>
-<li><a href="#/slide-4">4. Chaining example</a></li>
-</ul>
-</div>
-</div>
-</section>
 
 <section>
 <section id="slide-1">
 <h2 id="1"><span class="section-number-2">1.</span> Seperate repository for tutorial</h2>
 <p>
-<a href="https://github.com/MegMev/mgtut/blob/main/examples/options/tut_addnoise.py">https://github.com/MegMev/mgtut/blob/main/examples/options/tut_addnoise.py</a>
+<a href="https://github.com/MegMev/mgtut.git">https://github.com/MegMev/mgtut.git</a>
 </p>
 
 <ul>
@@ -71,8 +58,8 @@ Any issues?
 <div class="outline-text-2" id="text-3">
 </div>
 </section>
-<section id="slide-orga917876">
-<h3 id="orga917876">Two forms of event data:</h3>
+<section id="slide-orgcd760af">
+<h3 id="orgcd760af">Two forms of event data:</h3>
 <ul>
 <li>on disk: Persistency (ROOT file)</li>
 <li>on memory: Transient (during job running)</li>
@@ -80,8 +67,8 @@ Any issues?
 </ul>
 
 </section>
-<section id="slide-orga75fed3">
-<h3 id="orga75fed3">Transient Event Store (TES) of Gaudi:</h3>
+<section id="slide-org01c796b">
+<h3 id="org01c796b">Transient Event Store (TES) of Gaudi:</h3>
 <ul>
 <li>Acts as a registry book of all event data during job run:
 <ul>
@@ -121,8 +108,12 @@ An example showing how to chain several algorithms and how later algorithm can a
 from any previous algorithms (a big plus against REST).
 </p>
 
+<p>
+job option: <a href="https://github.com/MegMev/mgtut/blob/main/examples/options/tut_chain.py">https://github.com/MegMev/mgtut/blob/main/examples/options/tut_chain.py</a>
+</p>
 
-<div id="org42a157d" class="figure">
+
+<div id="orgef82a05" class="figure">
 <p><img src="data_access.png" alt="data_access.png" />
 </p>
 </div>
