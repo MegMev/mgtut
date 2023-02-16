@@ -20,7 +20,7 @@
 
 class MgTut_RdmNumber : public GaudiAlgorithm {
 public:
-  explicit MgTut_RdmNumber(const std::string&, ISvcLocator*);
+  MgTut_RdmNumber(const std::string&, ISvcLocator*);
   virtual ~MgTut_RdmNumber();
   /**  Initialize.
    *   @return status code

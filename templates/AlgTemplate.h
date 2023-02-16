@@ -29,7 +29,7 @@ namespace edm4hep {
 
 class AlgTemplate : public GaudiAlgorithm {
 public:
-  explicit AlgTemplate(const std::string&, ISvcLocator*);
+  AlgTemplate(const std::string&, ISvcLocator*);
   virtual ~AlgTemplate();
   /**  Initialize.
    *   @return status code

@@ -31,7 +31,7 @@ namespace edm4hep {
 
 class MgTut_EDMIO : public GaudiAlgorithm {
 public:
-  explicit MgTut_EDMIO(const std::string&, ISvcLocator*);
+  MgTut_EDMIO(const std::string&, ISvcLocator*);
   virtual ~MgTut_EDMIO();
   /**  Initialize.
    *   @return status code
