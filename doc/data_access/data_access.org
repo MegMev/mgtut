@@ -18,6 +18,24 @@
 #+REVEAL_ADD_PLUGIN: chalkboard RevealChalkboard https://cdn.jsdelivr.net/gh/rajgoel/reveal.js-plugins/chalkboard/plugin.js
 #+REVEAL_ACADEMIC_TITLE: Dr.
 
+* Simulation output
+#+name: tree
+#+begin_src ditaa :file event_data_tree.png
+  megat_tut.root
+  |
+  +-events
+  |  |
+  |  +-CztHits
+  |  |
+  |  +-TpcHits
+  |  |
+  |  +-SimParticles
+  |  |
+  |  +-GenParticles
+  |  |
+  |  +-trajactoryPoints
+  |  |
+#+end_src
 * Link to this presentation
 [[https://github.com/MegMev/mgtut/blob/main/doc/data_access.html]]
 
