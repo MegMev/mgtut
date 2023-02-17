@@ -93,6 +93,6 @@ out = PodioOutput('out')
 #### caveat: the filename must be different from HistSvc output file
 out.filename = 'chain_megat_tut.root'
 #### drop all but keep the offset collection
-out.outputCommands = ['keep *']
+out.outputCommands = ['keep *', 'drop CztHits']
 ApplicationMgr().TopAlg += [out]
 
