@@ -126,3 +126,9 @@ https://linev.github.io/
 
 *** LHCb only with event
 [[file:phoenix_lhcb2.png]]
+* Resource
+- Slides:
+  - [[https://github.com/MegMev/mgtut/blob/main/doc/tpc/v1_geometry/tpc_v1.html]]
+
+- A book about Modern C++:
+  - https://changkun.de/modern-cpp/
