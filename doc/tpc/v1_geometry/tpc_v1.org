@@ -90,6 +90,15 @@
 
 * Surface visualization
 
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+ #+REVEAL_HTML: <div class="one_of_2_columns">
+ [[file:new_vis.png]]
+ #+REVEAL_HTML: </div>
+ #+REVEAL_HTML: <div class="one_of_2_columns">
+ [[file:surface_vis.png]]
+ #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+
 * Thoughts on event display
 - Local environment
   - {{{emph(DDEve)}}}

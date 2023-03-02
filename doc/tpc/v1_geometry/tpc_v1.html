@@ -64,7 +64,8 @@
 <h2 id="2"><span class="section-number-2">2.</span> Quick go through of xml syntax</h2>
 <div class="org-src-container">
 
-<pre><code class="xml" >&lt;detector id="1" name="TPC" type="Megat_SimpleTpc" readout="TpcHits" sensitive="tracker"&gt;
+<pre><code class="xml" >&lt;!-- TPC subdetector specification --&gt;
+&lt;detector id="1" name="TPC" type="Megat_SimpleTpc" readout="TpcHits" sensitive="tracker"&gt;
   &lt;!-- 1. use a tube currently, may need top and bottom --&gt;
   &lt;envelope&gt;
     &lt;shape type="Tube" material="TPC_gas" rmax="Vessel_Body_Rmin-0.5*mm" dz="Vessel_Body_Z/2"/&gt;
@@ -118,6 +119,22 @@
 <section>
 <section id="slide-3">
 <h2 id="3"><span class="section-number-2">3.</span> Surface visualization</h2>
+<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+
+<div id="org723c141" class="figure">
+<p><img src="new_vis.png" alt="new_vis.png" />
+</p>
+</div>
+</div>
+<div class="one_of_2_columns">
+
+<div id="org1b99c96" class="figure">
+<p><img src="surface_vis.png" alt="surface_vis.png" />
+</p>
+</div>
+</div>
+</div>
 
 </section>
 </section>
@@ -160,37 +177,37 @@
 </ul>
 
 </section>
-<section id="slide-orga863e74">
-<h3 id="orga863e74">EVE7 demo</h3>
+<section id="slide-org36008bd">
+<h3 id="org36008bd">EVE7 demo</h3>
 <p>
 <a href="https://linev.github.io/">https://linev.github.io/</a>
 </p>
 
 
-<div id="orgfa4d570" class="figure">
+<div id="org28e6eb9" class="figure">
 <p><img src="eve7_demo.png" alt="eve7_demo.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-orgfc1751f">
-<h3 id="orgfc1751f">PHOENIX demo</h3>
-<div class="outline-text-3" id="text-orgfc1751f">
+<section id="slide-org7ecba3a">
+<h3 id="org7ecba3a">PHOENIX demo</h3>
+<div class="outline-text-3" id="text-org7ecba3a">
 </div>
 </section>
-<section id="slide-org30dfb09">
-<h4 id="org30dfb09">LHCb detector</h4>
+<section id="slide-org884a76e">
+<h4 id="org884a76e">LHCb detector</h4>
 
-<div id="org147c522" class="figure">
+<div id="orgeb11949" class="figure">
 <p><img src="phoenix_lhcb1.png" alt="phoenix_lhcb1.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-org5ea2669">
-<h4 id="org5ea2669">LHCb only with event</h4>
+<section id="slide-orgd740d73">
+<h4 id="orgd740d73">LHCb only with event</h4>
 
-<div id="org3d7548f" class="figure">
+<div id="orge77d128" class="figure">
 <p><img src="phoenix_lhcb2.png" alt="phoenix_lhcb2.png" />
 </p>
 </div>
