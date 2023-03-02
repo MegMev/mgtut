@@ -20,11 +20,23 @@
 <section id="sec-title-slide">
 <h1 class="title">Data Access: Transient Event Store</h1><em></em><br><br>Yong Zhou<br>
 </section>
+
 <section>
 <section id="slide-1">
 <h2 id="1"><span class="section-number-2">1.</span> Test</h2>
+<div class="org-src-container">
 
-<div id="org00da81f" class="figure">
+<pre><code class="artist" >&lt;-cursor right here
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-2">
+<h2 id="2"><span class="section-number-2">2.</span> Simulation output</h2>
+
+<div id="orgc434e2a" class="figure">
 <p><img src="event_data_tree.png" alt="event_data_tree.png" />
 </p>
 </div>
@@ -32,8 +44,8 @@
 </section>
 </section>
 <section>
-<section id="slide-2">
-<h2 id="2"><span class="section-number-2">2.</span> Link to this presentation</h2>
+<section id="slide-3">
+<h2 id="3"><span class="section-number-2">3.</span> Link to this presentation</h2>
 <p>
 <a href="https://github.com/MegMev/mgtut/blob/main/doc/data_access.html">https://github.com/MegMev/mgtut/blob/main/doc/data_access.html</a>
 </p>
@@ -41,8 +53,8 @@
 </section>
 </section>
 <section>
-<section id="slide-3">
-<h2 id="3"><span class="section-number-2">3.</span> Seperate repository for tutorial</h2>
+<section id="slide-4">
+<h2 id="4"><span class="section-number-2">4.</span> Seperate repository for tutorial</h2>
 <p>
 <a href="https://github.com/MegMev/mgtut.git">https://github.com/MegMev/mgtut.git</a>
 </p>
@@ -56,8 +68,8 @@
 </section>
 </section>
 <section>
-<section id="slide-4">
-<h2 id="4"><span class="section-number-2">4.</span> Task last week</h2>
+<section id="slide-5">
+<h2 id="5"><span class="section-number-2">5.</span> Task last week</h2>
 <ul>
 <li>noise adding: <a href="https://github.com/MegMev/mgtut/blob/main/examples/components/MgTut_AddNoise.cpp">MgTut_AddNoise</a></li>
 <li>draw the energy hist: <a href="https://github.com/MegMev/mgtut/blob/main/examples/components/MgTut_DrawCaloEnergy.cpp">MgTut_DrawCaloEnergy</a></li>
@@ -72,13 +84,13 @@ Any issues?
 </section>
 </section>
 <section>
-<section id="slide-5">
-<h2 id="5"><span class="section-number-2">5.</span> Event Data Access in Gaudi/k4megat</h2>
-<div class="outline-text-2" id="text-5">
+<section id="slide-6">
+<h2 id="6"><span class="section-number-2">6.</span> Event Data Access in Gaudi/k4megat</h2>
+<div class="outline-text-2" id="text-6">
 </div>
 </section>
-<section id="slide-org20295ca">
-<h3 id="org20295ca">Two forms of event data:</h3>
+<section id="slide-orgba50a80">
+<h3 id="orgba50a80">Two forms of event data:</h3>
 <ul>
 <li>on disk: Persistency (ROOT file)</li>
 <li>on memory: Transient (during job running)</li>
@@ -86,8 +98,8 @@ Any issues?
 </ul>
 
 </section>
-<section id="slide-org63026d4">
-<h3 id="org63026d4">Transient Event Store (TES) of Gaudi:</h3>
+<section id="slide-orga718a76">
+<h3 id="orga718a76">Transient Event Store (TES) of Gaudi:</h3>
 <ul>
 <li>Acts as a registry book of all event data during job run:
 <ul>
@@ -120,8 +132,8 @@ Any issues?
 </section>
 </section>
 <section>
-<section id="slide-6">
-<h2 id="6"><span class="section-number-2">6.</span> Chaining example</h2>
+<section id="slide-7">
+<h2 id="7"><span class="section-number-2">7.</span> Chaining example</h2>
 <p>
 An example showing how to chain several algorithms and how later algorithm can access output
 from any previous algorithms (a big plus against REST).
@@ -132,7 +144,7 @@ job option: <a href="https://github.com/MegMev/mgtut/blob/main/examples/options/
 </p>
 
 
-<div id="org61b95e2" class="figure">
+<div id="orgcb15637" class="figure">
 <p><img src="data_access.png" alt="data_access.png" />
 </p>
 </div>

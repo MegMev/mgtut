@@ -1,4 +1,3 @@
-
 #+OPTIONS: num:1 toc:0 reveal_width:1700 reveal_height:1000
 # #+OPTIONS: reveal_global_header:t reveal_global_footer:t
 #+REVEAL_THEME: black

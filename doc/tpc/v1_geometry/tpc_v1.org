@@ -1,0 +1,119 @@
+#+MACRO: emph @@html:<font color=#3498db>$1</font>@@
+#+MACRO: tag @@html:<font color=#aed6f1>&lt;$1&gt;</font>@@
+#+MACRO: mytag @@html:<p class="my-tag">&lt;$1&gt;</p>@@
+
+#+OPTIONS: num:1 toc:0 reveal_width:1700 reveal_height:1000
+# #+OPTIONS: reveal_global_header:t reveal_global_footer:t
+#+REVEAL_THEME: black
+#+REVEAL_TRANS: fade
+#+REVEAL_EXTRA_CSS: ./local.css
+# #+REVEAL_EXTRA_SCRIPT:
+#+REVEAL_TITLE_SLIDE: <h1 class="title">%t</h1><em>%s</em><br><br>%a<br>%d
+#+REVEAL_INIT_OPTIONS: width:1200, height:800, controlsLayout: 'bottom-right', slideNumber:"c/t", margin: 0, minScale:0.2, maxScale:2.5, menu: {side: 'left', titleSelector: 'h1, h2, h3, h4, h5, h6', hideMissingTitles: false, markers: true, custom: false, themes: true, transitions: true, openButton: true, openSlideNumber: false, keyboard: true, sticky: false, autoOpen: true}, chalkboard: {boardmarkerWidth: 8,	toggleChalkboardButton: { left: "80px" }, toggleNotesButton: { left: "130px"}}
+#+REVEAL_PLUGINS: (highlight)
+
+#+Title: TPC_v1 geometry
+#+Author: Yong Zhou
+#+Email: zyong06@gmail.com
+
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+REVEAL_VERSION: 4
+#+REVEAL_ADD_PLUGIN: chalkboard RevealChalkboard https://cdn.jsdelivr.net/gh/rajgoel/reveal.js-plugins/chalkboard/plugin.js
+#+REVEAL_ACADEMIC_TITLE: Dr.
+
+* Major upgrade
+
+- Drift volume specification: {{{tag(driftvol)}}}
+  - any shape, translation and rotation
+  - anode attachment: {{{tag(anode_surface)}}}
+    - attributes: {{{tag(origin)}}} and {{{tag(normal)}}}
+      - with respect to the local coordinate system
+    - to be used in parameterized simulation (e.g. calculate drift distance)
+    - not for segmentation (left for surfaces attached to readout PCBs)
+    - limitation: only support translation misalignment, not rotation
+  - [[https://k4megat-doc.readthedocs.io/projects/third-party/en/latest/dd4hep/dd4hep.html#surface][how to define surface in DD4hep]]
+- TPC envelope
+  - add translation and rotation inside world
+- Compact path name
+  - remove meaningless suffix (e.g. copy number)
+- Better visual attributes
+
+* Quick go through of xml syntax
+
+#+begin_src xml
+  <!-- TPC subdetector specification -->
+  <detector id="1" name="TPC" type="Megat_SimpleTpc" readout="TpcHits" sensitive="tracker">
+    <!-- 1. use a tube currently, may need top and bottom -->
+    <envelope>
+      <shape type="Tube" material="TPC_gas" rmax="Vessel_Body_Rmin-0.5*mm" dz="Vessel_Body_Z/2"/>
+      <!-- <position x="10" y="200" z="0"/>
+           <rotation x="100" y="80" z="90" /> -->
+    </envelope>
+
+    <!-- 2. volume of drifting needs special consideration  -->
+    <driftvol name="Gas" material="TPC_gas" vis="TpcGasVis" limits="Tpc_LimitSet">
+      <!-- shape and placement int -->
+      <shape type="Box" dx="Tpc_Drift_X/2" dy="Tpc_Drift_Y/2" dz="Tpc_Drift_Z/2"/>
+      <position x="0" y="0" z="Tpc_Drift_Offset"/>
+      <!-- <rotation x="0" y="0" z="0" /> -->
+
+      <anode_surface>
+        <!-- origin point and surface normal unit direction -->
+        <origin x="0" y="0" z="Tpc_Drift_Z/2"/>
+        <!-- normal direction should parallel to drift direction -->
+        <normal x="0" y="0" z="1"/>
+      </anode_surface>
+    </driftvol>
+
+    <!-- 3. all other components: solids, volumes, placements-->
+    <volume name="Pcb" material="PCB" vis="TpcPcbVis">
+      <shape type="Box" dx="Tpc_Pcb_X/2" dy="Tpc_Pcb_Y/2" dz="Tpc_Pcb_Z/2"/>
+    </volume>
+    <!-- ... -->
+
+    <physvol name="Pcb" element="Pcb" volume="Pcb">
+      <position x="0" y="0" z="Tpc_Drift_Z/2+Tpc_Drift_Offset+Tpc_Pcb_Z/2"/>
+    </physvol>
+    <!-- ... -->
+  </detector>
+
+  <!-- ... -->
+
+  <!-- Readout specification -->
+  <readout name="TpcHits">
+    <!-- <segmentation type="NoSegmentation"/> -->
+    <id>system:6</id>
+  </readout>
+#+end_src
+
+=k4megat/detector/geometry/compact/TPC_v1.xml=
+
+* Surface visualization
+
+* Thoughts on event display
+- Local environment
+  - {{{emph(DDEve)}}}
+    - optimized for collider experiment
+  - Customization is the main task
+    - {{{emph(Y-Z)}}} and {{{emph(X-Z)}}} projection for strip readout
+    - import {{{(emph(EDM4hep)}}} event
+- Remote environment (in future)
+  - ROOT package: {{{emph(EVE7)}}}
+  - alternative: [[https://github.com/HSF/phoenix][PHOENIX]]
+- Integration with online monitoring facility
+  - {{{emph(data streaming)}}} strategy
+  - {{{emph(Data Quality Monitoring)}}} (DQM)
+    - lot of histogramming needed
+
+** EVE7 demo
+https://linev.github.io/
+
+[[file:eve7_demo.png]]
+
+** PHOENIX demo
+
+*** LHCb detector
+[[file:phoenix_lhcb1.png]]
+
+*** LHCb only with event
+[[file:phoenix_lhcb2.png]]

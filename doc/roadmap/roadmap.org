@@ -1,0 +1,108 @@
+#+OPTIONS: num:1 toc:0 reveal_width:1700 reveal_height:1000
+# #+OPTIONS: reveal_global_header:t reveal_global_footer:t
+#+REVEAL_THEME: black
+#+REVEAL_TRANS: fade
+#+REVEAL_EXTRA_CSS: ./local.css
+# #+REVEAL_EXTRA_SCRIPT:
+#+REVEAL_TITLE_SLIDE: <h1 class="title">%t</h1><em>%s</em><br><br>%a<br>%d
+#+REVEAL_INIT_OPTIONS: width:1200, height:800, controlsLayout: 'bottom-right', slideNumber:"c/t", margin: 0, minScale:0.2, maxScale:2.5, menu: {side: 'left', titleSelector: 'h1, h2, h3, h4, h5, h6', hideMissingTitles: false, markers: true, custom: false, themes: true, transitions: true, openButton: true, openSlideNumber: false, keyboard: true, sticky: false, autoOpen: true}, chalkboard: {boardmarkerWidth: 8,	toggleChalkboardButton: { left: "80px" }, toggleNotesButton: { left: "130px"}}
+#+REVEAL_PLUGINS: (highlight)
+
+#+Title: Roadmap of k4megat development
+#+Author: Yong Zhou
+#+Email: zyong06@gmail.com
+
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+REVEAL_VERSION: 4
+#+REVEAL_ADD_PLUGIN: chalkboard RevealChalkboard https://cdn.jsdelivr.net/gh/rajgoel/reveal.js-plugins/chalkboard/plugin.js
+#+REVEAL_ACADEMIC_TITLE: Dr.
+
+* Overview
+- ~k4megat~ 骨架已有
+- 有许多功能需要填充
+- 后续开发要有序并可控
+- 一個可能的路线图
+
+* Simulation
+** Geometry
+ - Add ~Surface~
+   - especially TPC, mandatory for it's digitization
+ - Alignment strategy
+   - ~DD4hep~ provides a solution
+   - not urgent, but better have a rough idea now
+
+ I'm working on both topics right now.
+ 
+** Generator
+ - for detector design study
+   - TPC volume distribution
+   - dedicated Compton events
+ - real physics distribution
+   - Cosmic ray
+   - Targeted $\gamma$-ray distribution
+
+Solution exist, the main issue is integration into ~k4megat~.
+
+** Engine
+ We have two engines available for simulation:
+ - Native Gaudi algorithm (~SimAlg~)
+   - adapted from =k4SimGeant4=
+   - simple interface, but limited features
+ - External: =DDG4=
+   - a separate step from the Gaudi procssing loop
+   - better integration with =Geant4= and other components of =DD4hep=
+   - much more flexible, expose more interfaces for customization
+
+ Recommendation:
+ - use ~SimAlg~ in short-term
+ - migrate to =DDG4= in long-term
+   - TPC digitization need very flexible framework
+   - Multi-Threading support
+
+** Algorithms
+*** Group1
+ - Digitization
+   - TPC (I'm working it, close to a first prototype)
+   - CZT (much simpler, but need dedicated man-power)
+   - Both need some 'dirty' work in the lab
+ - Detector design study
+   - Readout pattern study of TPC
+   - Granularity study of CZT
+   - Both work may have interesting results
+     - explore ML for detector design optimization?
+ - Reconstruction
+   - Signal processing
+   - Tracking
+   - Clustering
+   - home-grown solution is definitely needed
+     - put ACTS and clue on the watch list
+
+*** Group2
+ - Calibration
+   - ~DD4hep~ provides a solution
+   - not urgent, but better have a rough idea now
+ - Raw Data
+   - not urgent, but better have a rough idea now
+   - most likely as a Gaudi algorithm
+
+*** Group3
+ - Analysis
+   - A big topic that needs continuous discussion
+     
+** Event display
+ - TEVE for desktop usage
+ - PHENIX for shared usage
+
+** Data preservation and distribution
+- database
+  - conditions
+  - aligenment
+- online monitoring (DQM)
+  - apache kafka?
+- shared analysis environment
+  - spark/dask
+
+** Software management
+ - Documentation
+ - CI
+ - Deployment strategy

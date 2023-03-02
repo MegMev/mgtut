@@ -1,0 +1,55 @@
+.reveal h1 {
+    text-shadow: 0 10px 10px blue;
+    /* text-transform: none; */
+}
+/* .reveal ul { */
+/*     list-style-type: lower-greek; */
+/* } */
+/* .reveal pre { */
+/*     font-size: 1em; */
+/* } */
+
+.reveal .slides .slide-footer {
+    /* font-size: 20px; */
+    /* color: Gray; */
+    /* position: fixed; */
+    /* bottom: 1; */
+    /* left: 0; */
+
+    font-size: 2vh;
+    color: gray;
+    position: fixed;
+    /* left: 400px; */
+    bottom: 1px;
+    width: 100%;
+    text-align: center;
+    /* margin-left:auto; */
+    /* margin-right:auto; */
+    /* margin-top:2em; */
+    /* z-index: 50; */
+}
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+    margin: 0 0 20px 0;
+    color: #eee8d5;
+    font-family: "League Gothic", Impact, sans-serif;
+    line-height: 0.9em;
+    letter-spacing: 0.02em;
+    text-transform: none;
+}
+.my-tag {
+    /* font-size: 14px; */
+    color:#aed6f1;
+    font-family: "League Gothic", Impact, sans-serif;
+}
+.reveal pre code {
+    display: block;
+    padding: 5px;
+    overflow: auto;
+    max-height: 800px;
+    word-wrap: normal;
+}
