@@ -1,0 +1,154 @@
+#+MACRO: emph @@html:<font color=#f5a92f>$1</font>@@
+#+MACRO: alert @@html:<font color=#3498db>$1</font>@@
+#+MACRO: tag @@html:<font color=#aed6f1>&lt;$1&gt;</font>@@
+#+MACRO: mytag @@html:<p class="my-tag">&lt;$1&gt;</p>@@
+
+#+OPTIONS: num:1 toc:0 reveal_width:1700 reveal_height:1000
+# #+OPTIONS: reveal_global_header:t reveal_global_footer:t
+#+REVEAL_THEME: black
+#+REVEAL_TRANS: fade
+#+REVEAL_EXTRA_CSS: ./local.css
+# #+REVEAL_EXTRA_SCRIPT:
+#+REVEAL_TITLE_SLIDE: <h1 class="title">%t</h1><em>%s</em><br><br>%a<br>%d
+#+REVEAL_INIT_OPTIONS: width:1200, height:800, controlsLayout: 'bottom-right', slideNumber:"c/t", margin: 0, minScale:0.2, maxScale:2.5, menu: {side: 'left', titleSelector: 'h1, h2, h3, h4, h5, h6', hideMissingTitles: false, markers: true, custom: false, themes: true, transitions: true, openButton: true, openSlideNumber: false, keyboard: true, sticky: false, autoOpen: true}, chalkboard: {boardmarkerWidth: 8,	toggleChalkboardButton: { left: "80px" }, toggleNotesButton: { left: "130px"}}
+#+REVEAL_PLUGINS: (highlight)
+
+#+Title: TPC Digitization (Parameterized version)
+#+Author: 
+#+Email: zyong06@gmail.com
+
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+REVEAL_VERSION: 4
+#+REVEAL_ADD_PLUGIN: chalkboard RevealChalkboard https://cdn.jsdelivr.net/gh/rajgoel/reveal.js-plugins/chalkboard/plugin.js
+#+REVEAL_ACADEMIC_TITLE: Dr.
+
+* Major update
+** TPC geometry
+- Add readout PCB tag in =compact= xml, for segmentation usage.
+  - each PCB is attached with a sensitive surface
+  - Multi PCBs are supported (only for pixel readout)
+
+#+begin_src xml
+  <readout_pcbs name="Pcb"
+                material="PCB"
+                vis="TpcPcbVis">
+    <!-- shape [todo: only box suported] -->
+    <shape type="Box" dx="Tpc_Pcb_X/Tpc_Pcb_Nx/2" dy="Tpc_Pcb_Y/Tpc_Pcb_Ny/2" dz="Tpc_Pcb_Z/2"/>
+
+    <!-- surface -->
+    <surface dim_u="fiducial_x*2" dim_v="fiducial_y*2">
+      <u_direction x="1." y="0." z="0."/>
+      <v_direction x="0." y="1." z="0."/>
+      <normal x="0." y="0." z="1."/>
+      <origin x="0." y="0." z="-Tpc_Pcb_Z/2"/>
+    </surface>
+
+    <!-- Row and column number: if not specified, a mono PCB is defined -->
+    <row nmodules="Tpc_Pcb_Nx" gap="Tpc_Pcb_RowGap" />
+    <column nmodules="Tpc_Pcb_Ny" gap="Tpc_Pcb_ColGap" />
+
+    <!-- PCB envelop placement relative to subdector envelop -->
+    <position x="0" y="0" z="Tpc_Drift_Z/2+Tpc_Drift_Offset+Tpc_Pcb_Z/2"/>
+    <!-- <rotation x="100" y="80" z="90" /> -->
+  </readout_pcbs>
+#+end_src
+
+** TPC digitization
+
+**** Job options: [[https://github.com/MegMev/k4megat/tree/sim-dev/digi/options]]
+
+#+begin_src plantuml :file tpc_digi_chain.png
+  @startmindmap
+  <style>
+  mindmapDiagram {
+          .tpc {
+                  BackgroundColor lightblue
+          }
+          .calo {
+                  BackgroundColor lightgreen
+          }
+  }
+  </style>
+  * Simulation Output
+  ** TpcDriftAlg <<tpc>>
+  *** TpcSegmentAlg <<tpc>>
+  **** TpcSamplingAlg <<tpc>>
+  **** TpcSimpleSmearAlg <<tpc>>
+  ***** TpcSamplingAlg <<tpc>>
+  ** CaloSimpleSmearAlg <<calo>>
+  @endmindmap
+#+end_src
+
+#+ATTR_HTML: :width 90%
+#+RESULTS:
+[[file:tpc_digi_chain.png]]
+
+**** {{{emph(TpcDriftAlg)}}} (from REST TRestDetectorElectronDiffusionProcess)
+1. secondary ionization (electron generation)
+2. diffusion
+3. drift to anode surface
+4. distance to time
+
+{{{alert(Output is electrons drifted to the anode surface)}}}
+
+{{{alert(drift and diffusion coordinates are in local systeme of drift volume)}}}
+
+*** 
+**** {{{emph(TpcSegmentAlg)}}}
+1. specify the readout segmentation (from xml): pixel or strip
+2. collect the drifted electrons to each readout cell
+3. save sum energy and e-weighted position for each cell
+
+#+begin_src xml
+  <readouts>
+  <!-- pixel readout -->
+      <readout name="TpcPixelHits">
+          <segmentation type="CartesianGridXY" grid_size_x="tpc_pixel_x" grid_size_y="tpc_pixel_y"
+                        offset_x="-fiducial_x + tpc_pixel_x/2" offset_y="-fiducial_y + tpc_pixel_y/2" />
+          <id>system:6,x:16:24,y:24</id>
+      </readout>
+
+  <!-- strip readout -->
+      <readout name="TpcStripHits">
+          <segmentation   type="MultiSegmentation"  key="layer">
+              <segmentation name="XLayer" type="CartesianStripX" key_value="0"
+                            strip_size_x="tpc_strip_x" offset_x="-fiducial_x + tpc_strip_x/2" />
+              <segmentation name="YLayer" type="CartesianStripY" key_value="1"
+                            strip_size_x="tpc_strip_y" offset_x="-fiducial_y + tpc_strip_y/2" />
+          </segmentation>
+          <!-- <hits_collections>
+               <hits_collection name="TpcStripHitsX"  key="layer" key_value="0"/>
+               <hits_collection name="TpcStripHitsY"  key="layer" key_value="1"/>
+               </hits_collections> -->
+          <id>system:6,layer:6,strip:16:48</id>
+      </readout>
+  </readouts>
+#+end_src
+
+*** 
+**** {{{emph(TpcSamplingAlg)}}}
+ - sample interval
+ - sample points
+ - shaping time
+ - gain factor for adapting to ADC range
+ - ADC offset
+
+ {{{alert(only support 16-bit ADC currently)}}}
+
+**** {{{emph(TpcSimpleSmearAlg & CaloSimpleSmearAlg)}}}
+Add a fixed-value (customizable) Gaussian width to
+- EDep (Tpc and Calo)
+- Time (Tpc)
+
+* Other updates
+** 
+1. System of Units
+  - Default: mm, GeV, ns
+  - Internal representation: CLHEP
+  - Unit conversion when passing values between different packages
+2. =GeoSvc=
+  - Surface list access
+3. Documentation updates (https://k4megat-doc.readthedocs.io)
+  - Random number service
+  - System of Units
+  - ROOT file objects description
