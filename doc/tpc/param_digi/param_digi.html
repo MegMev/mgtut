@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <title>TPC Digitization (Parameterized version)</title>
-<meta name="author" content="Yong Zhou"/>
+<meta name="author" content="Talk link: https://github.com/MegMev/mgtut/tree/main/doc/tpc/param_digi"/>
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
@@ -18,18 +18,17 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide">
-<h1 class="title">TPC Digitization (Parameterized version)</h1><em></em><br><br>Yong Zhou<br>
+<h1 class="title">TPC Digitization (Parameterized version)</h1><em></em><br><br>Talk link: <a href="https://github.com/MegMev/mgtut/tree/main/doc/tpc/param_digi">https://github.com/MegMev/mgtut/tree/main/doc/tpc/param_digi</a><br>
 </section>
 
 <section>
 <section id="slide-1">
 <h2 id="1"><span class="section-number-2">1.</span> Major update</h2>
-<p>
-reveal header on top of page
-</p>
+<div class="outline-text-2" id="text-1">
+</div>
 </section>
-<section id="slide-org0b38e65">
-<h3 id="org0b38e65">TPC geometry</h3>
+<section id="slide-org0a8ab6c">
+<h3 id="org0a8ab6c">TPC geometry</h3>
 <ul>
 <li>Add readout PCB tag in <code>compact</code> xml, for segmentation usage.
 <ul>
@@ -68,19 +67,19 @@ reveal header on top of page
 </div>
 
 </section>
-<section id="slide-orgaca58d0">
-<h3 id="orgaca58d0">TPC digitization</h3>
-<div class="outline-text-3" id="text-orgaca58d0">
+<section id="slide-org2219266">
+<h3 id="org2219266">TPC digitization</h3>
+<div class="outline-text-3" id="text-org2219266">
 </div>
 <ul class="org-ul">
-<li><a id="org785a836"></a>Job options: <a href="https://github.com/MegMev/k4megat/tree/sim-dev/digi/options">https://github.com/MegMev/k4megat/tree/sim-dev/digi/options</a><br />
-<div id="org5b03a9f" class="figure">
+<li><a id="org2edb7f4"></a>Job options: <a href="https://github.com/MegMev/k4megat/tree/sim-dev/digi/options">https://github.com/MegMev/k4megat/tree/sim-dev/digi/options</a><br />
+<div id="orgb06d562" class="figure">
 <p><img src="tpc_digi_chain.png" alt="tpc_digi_chain.png" width="90%" />
 </p>
 </div>
 </li>
 
-<li><a id="org3bf3370"></a><font color=#f5a92f>TpcDriftAlg</font> (from REST TRestDetectorElectronDiffusionProcess)<br />
+<li><a id="org57dbb0d"></a><font color=#f5a92f>TpcDriftAlg</font> (from REST TRestDetectorElectronDiffusionProcess)<br />
 <ol>
 <li>secondary ionization (electron generation)</li>
 <li>diffusion</li>
@@ -100,12 +99,12 @@ reveal header on top of page
 </ul>
 
 </section>
-<section id="slide-org63c1fc8">
-<h4 id="org63c1fc8"></h4>
-<div class="outline-text-4" id="text-org63c1fc8">
+<section id="slide-orgbda3c97">
+<h4 id="orgbda3c97"></h4>
+<div class="outline-text-4" id="text-orgbda3c97">
 </div>
 <ul class="org-ul">
-<li><a id="org82eecc7"></a><font color=#f5a92f>TpcSegmentAlg</font><br />
+<li><a id="orga392f75"></a><font color=#f5a92f>TpcSegmentAlg</font><br />
 <ol>
 <li>specify the readout segmentation (from xml): pixel or strip</li>
 <li>collect the drifted electrons to each readout cell</li>
@@ -144,12 +143,12 @@ reveal header on top of page
 </ul>
 
 </section>
-<section id="slide-org211ce69">
-<h4 id="org211ce69"></h4>
-<div class="outline-text-4" id="text-org211ce69">
+<section id="slide-orgc200d30">
+<h4 id="orgc200d30"></h4>
+<div class="outline-text-4" id="text-orgc200d30">
 </div>
 <ul class="org-ul">
-<li><a id="org785147f"></a><font color=#f5a92f>TpcSamplingAlg</font><br />
+<li><a id="org5ecac3d"></a><font color=#f5a92f>TpcSamplingAlg</font><br />
 <ul>
 <li>sample interval</li>
 <li>sample points</li>
@@ -164,7 +163,7 @@ reveal header on top of page
 </p>
 </li>
 
-<li><a id="org18d3c7b"></a><font color=#f5a92f>TpcSimpleSmearAlg & CaloSimpleSmearAlg</font><br />
+<li><a id="orgf27a49a"></a><font color=#f5a92f>TpcSimpleSmearAlg & CaloSimpleSmearAlg</font><br />
 <p>
 Add a fixed-value (customizable) Gaussian width to
 </p>
@@ -184,8 +183,8 @@ Add a fixed-value (customizable) Gaussian width to
 <div class="outline-text-2" id="text-2">
 </div>
 </section>
-<section id="slide-org550fc39">
-<h3 id="org550fc39"></h3>
+<section id="slide-orgda95446">
+<h3 id="orgda95446"></h3>
 <ol>
 <li>System of Units
 <ul>
