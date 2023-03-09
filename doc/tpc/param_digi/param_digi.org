@@ -13,7 +13,7 @@
 #+REVEAL_INIT_OPTIONS: width:1200, height:800, controlsLayout: 'bottom-right', slideNumber:"c/t", margin: 0, minScale:0.2, maxScale:2.5, menu: {side: 'left', titleSelector: 'h1, h2, h3, h4, h5, h6', hideMissingTitles: false, markers: true, custom: false, themes: true, transitions: true, openButton: true, openSlideNumber: false, keyboard: true, sticky: false, autoOpen: true}, chalkboard: {boardmarkerWidth: 8,	toggleChalkboardButton: { left: "80px" }, toggleNotesButton: { left: "130px"}}
 #+REVEAL_PLUGINS: (highlight)
 
-#+Title: TPC Digitization (Parameterized version)
+#+Title: TPC Digitization
 #+Author: Talk link: https://github.com/MegMev/mgtut/tree/main/doc/tpc/param_digi
 #+Email: zyong06@gmail.com
 
