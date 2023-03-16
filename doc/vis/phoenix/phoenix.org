@@ -1,0 +1,25 @@
+#+OPTIONS: num:1 toc:0 reveal_width:1700 reveal_height:1000
+# #+OPTIONS: reveal_global_header:t reveal_global_footer:t
+#+REVEAL_THEME: black
+#+REVEAL_TRANS: fade
+#+REVEAL_EXTRA_CSS: ./local.css
+# #+REVEAL_EXTRA_SCRIPT:
+#+REVEAL_TITLE_SLIDE: <h1 class="title">%t</h1><em>%s</em><br><br>%a<br>%d
+#+REVEAL_INIT_OPTIONS: width:1200, height:800, controlsLayout: 'bottom-right', slideNumber:"c/t", margin: 0, minScale:0.2, maxScale:2.5, menu: {side: 'left', titleSelector: 'h1, h2, h3, h4, h5, h6', hideMissingTitles: false, markers: true, custom: false, themes: true, transitions: true, openButton: true, openSlideNumber: false, keyboard: true, sticky: false, autoOpen: true}, chalkboard: {boardmarkerWidth: 8,	toggleChalkboardButton: { left: "80px" }, toggleNotesButton: { left: "130px"}}
+#+REVEAL_PLUGINS: (highlight)
+
+#+TITLE:     Visualization with Phoenix
+#+AUTHOR:    Yong Zhou
+#+EMAIL:     zyong06@gmail.com
+
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+REVEAL_VERSION: 4
+#+REVEAL_ADD_PLUGIN: chalkboard RevealChalkboard https://cdn.jsdelivr.net/gh/rajgoel/reveal.js-plugins/chalkboard/plugin.js
+
+* Visualization
+[[https://ufan.site:444/phoenix/#/megat]]
+
+#+begin_src bash
+  edm4hep2json tpcdrift_megat.root -o output.json -n 10 -l "TpcDriftHits,TpcSimHits"
+#+end_src
+[[file:megat_online.png]]
