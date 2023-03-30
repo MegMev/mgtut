@@ -4,8 +4,8 @@
 
 #+OPTIONS: num:1 toc:0 reveal_width:1700 reveal_height:1000
 # #+OPTIONS: reveal_global_header:t reveal_global_footer:t
-#+REVEAL_THEME: black
-#+REVEAL_TRANS: fade
+# #+REVEAL_THEME: black
+# #+REVEAL_TRANS: fade
 #+REVEAL_EXTRA_CSS: ./local.css
 # #+REVEAL_EXTRA_SCRIPT:
 #+REVEAL_TITLE_SLIDE: <h1 class="title">%t</h1><em>%s</em><br><br>%a<br>%d
@@ -16,10 +16,10 @@
 #+Author: Yong Zhou
 #+Email: zyong06@gmail.com
 
-#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
-#+REVEAL_VERSION: 4
-#+REVEAL_ADD_PLUGIN: chalkboard RevealChalkboard https://cdn.jsdelivr.net/gh/rajgoel/reveal.js-plugins/chalkboard/plugin.js
-#+REVEAL_ACADEMIC_TITLE: Dr.
+# #+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+# #+REVEAL_VERSION: 4
+# #+REVEAL_ADD_PLUGIN: chalkboard RevealChalkboard https://cdn.jsdelivr.net/gh/rajgoel/reveal.js-plugins/chalkboard/plugin.js
+# #+REVEAL_ACADEMIC_TITLE: Dr.
 
 * Major upgrade
 

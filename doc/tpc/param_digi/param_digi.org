@@ -83,8 +83,8 @@
 [[file:tpc_digi_chain.png]]
 
 **** {{{emph(TpcDriftAlg)}}} (from REST TRestDetectorElectronDiffusionProcess)
-1. secondary ionization (electron generation)
-2. diffusion
+1. secondary ionization (electron generation: 25 eV)
+2. diffusion (200/250 $um/sqrt(cm)$
 3. drift to anode surface
 4. distance to time
 

@@ -13,6 +13,7 @@
 
 <link rel="stylesheet" href="./local.css"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/plugin/highlight/zenburn.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 <body>
 <div class="reveal">
@@ -27,8 +28,8 @@
 <div class="outline-text-2" id="text-1">
 </div>
 </section>
-<section id="slide-orgdbef335">
-<h3 id="orgdbef335">TPC geometry</h3>
+<section id="slide-orgd8dfffd">
+<h3 id="orgd8dfffd">TPC geometry</h3>
 <ul>
 <li>Add readout PCB tag in <code>compact</code> xml, for segmentation usage.
 <ul>
@@ -67,22 +68,22 @@
 </div>
 
 </section>
-<section id="slide-orgd94649b">
-<h3 id="orgd94649b">TPC digitization</h3>
-<div class="outline-text-3" id="text-orgd94649b">
+<section id="slide-org26e14d8">
+<h3 id="org26e14d8">TPC digitization</h3>
+<div class="outline-text-3" id="text-org26e14d8">
 </div>
 <ul class="org-ul">
-<li><a id="orgce44f0b"></a>Job options: <a href="https://github.com/MegMev/k4megat/tree/sim-dev/digi/options">https://github.com/MegMev/k4megat/tree/sim-dev/digi/options</a><br />
-<div id="org86efb24" class="figure">
+<li><a id="org9cfbfa6"></a>Job options: <a href="https://github.com/MegMev/k4megat/tree/sim-dev/digi/options">https://github.com/MegMev/k4megat/tree/sim-dev/digi/options</a><br />
+<div id="org237e67c" class="figure">
 <p><img src="tpc_digi_chain.png" alt="tpc_digi_chain.png" width="90%" />
 </p>
 </div>
 </li>
 
-<li><a id="orgdcb8d83"></a><font color=#f5a92f>TpcDriftAlg</font> (from REST TRestDetectorElectronDiffusionProcess)<br />
+<li><a id="org6c02819"></a><font color=#f5a92f>TpcDriftAlg</font> (from REST TRestDetectorElectronDiffusionProcess)<br />
 <ol>
-<li>secondary ionization (electron generation)</li>
-<li>diffusion</li>
+<li>secondary ionization (electron generation: 25 eV)</li>
+<li>diffusion (200/250 \(um/sqrt(cm)\)</li>
 <li>drift to anode surface</li>
 <li>distance to time</li>
 
@@ -99,12 +100,12 @@
 </ul>
 
 </section>
-<section id="slide-orgb780c1d">
-<h4 id="orgb780c1d"></h4>
-<div class="outline-text-4" id="text-orgb780c1d">
+<section id="slide-org60cdcb9">
+<h4 id="org60cdcb9"></h4>
+<div class="outline-text-4" id="text-org60cdcb9">
 </div>
 <ul class="org-ul">
-<li><a id="orgfeb7d29"></a><font color=#f5a92f>TpcSegmentAlg</font><br />
+<li><a id="org9270df5"></a><font color=#f5a92f>TpcSegmentAlg</font><br />
 <ol>
 <li>specify the readout segmentation (from xml): pixel or strip</li>
 <li>collect the drifted electrons to each readout cell</li>
@@ -143,12 +144,12 @@
 </ul>
 
 </section>
-<section id="slide-org3f25784">
-<h4 id="org3f25784"></h4>
-<div class="outline-text-4" id="text-org3f25784">
+<section id="slide-org0f5e7b7">
+<h4 id="org0f5e7b7"></h4>
+<div class="outline-text-4" id="text-org0f5e7b7">
 </div>
 <ul class="org-ul">
-<li><a id="org712576c"></a><font color=#f5a92f>TpcSamplingAlg</font><br />
+<li><a id="org4694c75"></a><font color=#f5a92f>TpcSamplingAlg</font><br />
 <ul>
 <li>sample interval</li>
 <li>sample points</li>
@@ -163,7 +164,7 @@
 </p>
 </li>
 
-<li><a id="org6b538c2"></a><font color=#f5a92f>TpcSimpleSmearAlg & CaloSimpleSmearAlg</font><br />
+<li><a id="org4e13327"></a><font color=#f5a92f>TpcSimpleSmearAlg & CaloSimpleSmearAlg</font><br />
 <p>
 Add a fixed-value (customizable) Gaussian width to
 </p>
@@ -183,8 +184,8 @@ Add a fixed-value (customizable) Gaussian width to
 <div class="outline-text-2" id="text-2">
 </div>
 </section>
-<section id="slide-org7b1437f">
-<h3 id="org7b1437f"></h3>
+<section id="slide-orgdaf61bd">
+<h3 id="orgdaf61bd"></h3>
 <ol>
 <li>System of Units
 <ul>
