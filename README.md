@@ -29,7 +29,7 @@ There is a script named *run* and *mgtutenv.sh* under *build* directory if compi
 One-time execution:
 ```bash
 # under build directory
-./run k4run ../examples/tut_rdm.py
+./run k4run ../examples/options/tut_rdm.py
 ```
 
 ## Method 2 ##
@@ -37,7 +37,7 @@ Session execution:
 ```bash
 # under build directory
 source mgtutenv.sh
-k4run ../examples/tut_rdm.py
+k4run ../examples/options/tut_rdm.py
 source 
 ```
 # Use it as temporary development repo #
